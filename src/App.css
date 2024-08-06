@@ -1,0 +1,10 @@
+body {
+  background-color: black;
+  color: white;
+}
+.Auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}

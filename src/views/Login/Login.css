@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login {
+  width: 300px;
+  height: auto;
+  background-color: aquamarine;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login .title p {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login .input-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login .input-fields .input-field {
+  padding: 7px 12px;
+  width: 100%;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #333;
+  border-radius: 20px;
+}
+
+.login .input-fields .input-field:focus {
+  outline: none;
+  border: 1px solid red;
+}
+
+.login .sumbit-btn-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login .sumbit-btn-holder .sumbit-btn {
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: bold;
+  color: gray;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+
+.login .sumbit-btn-holder .sumbit-btn:hover {
+  cursor: pointer;
+}
+
+.login .socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login .icons-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.login .icons-holder i {
+  width: 40px;
+  height: 40px;
+  padding: 15px;
+  border: 1px solid #333;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.login .icons-holder i:hover {
+  cursor: pointer;
+}
