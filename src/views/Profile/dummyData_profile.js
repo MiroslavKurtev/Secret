@@ -3,12 +3,10 @@ const profile = {
   first_name: 'Ivan',
   last_name: 'Petrov',
   age_group: 'M16',
-  total: {
-    kilometers: 142,
-    workouts: 41,
-    competitions: 5,
-    competitions_starts: 23,
-  },
+  total_kilometers: 142,
+  total_workouts: 41,
+  total_competitions: 5,
+  total_competitions_starts: 23,
 };
 
 export default profile;

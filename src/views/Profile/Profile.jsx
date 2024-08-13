@@ -1,5 +1,9 @@
 import React from 'react';
 import './Profile.css';
+import profile from './dummyData_profile.js';
+import ProfileInformation from './ProfileInformation.jsx';
+import ProfileWorkouts from './ProfileWorkouts.jsx';
+import Competitions from './Competitions/Competitions.jsx';
 
 const Profile = () => {
   return (
@@ -8,14 +12,10 @@ const Profile = () => {
         <div className='img-container'>
           <img src={process.env.PUBLIC_URL + 'default_profile.jpg'} alt='' />
         </div>
-        <div className='information-container'>
-          <div></div>
-        </div>
+        <ProfileInformation profileData={profile} />
       </div>
-      <div className='profile-stats'>
-        <div className='profile-trainings'>Trainings</div>
-        <div className='profile-competitions'>Competitions</div>
-      </div>
+      <ProfileWorkouts />
+      <Competitions />
     </div>
   );
 };

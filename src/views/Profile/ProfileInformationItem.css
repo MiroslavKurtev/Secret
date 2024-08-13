@@ -1,0 +1,12 @@
+.profile-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  width: 48%;
+}
+
+.profile-item label::first-letter {
+  text-transform: uppercase;
+}

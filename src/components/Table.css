@@ -1,0 +1,72 @@
+/* TableStyles.css */
+
+/* General styles for the table */
+.table-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  caption-side: bottom;
+  font-size: 0.875rem; /* 14px */
+}
+
+/* TableHeader styles */
+.table-header {
+  border-bottom: 1px solid #ddd; /* Adjust as needed */
+}
+
+/* TableBody styles */
+.table-body tr:last-child {
+  border-bottom: 0;
+}
+
+/* TableFooter styles */
+.table-footer {
+  border-top: 1px solid #ddd; /* Adjust as needed */
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust as needed */
+  font-weight: 500;
+}
+
+/* TableRow styles */
+.table-row {
+  border-bottom: 1px solid #ddd; /* Adjust as needed */
+  transition: background-color 0.3s;
+}
+
+tbody .table-row:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust as needed */
+}
+
+.table-row[data-state='selected'] {
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust as needed */
+}
+
+/* TableHead styles */
+.table-head {
+  height: 3rem; /* 48px */
+  padding: 0 1rem; /* 16px */
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #666; /* Adjust as needed */
+}
+
+/* TableCell styles */
+.table-cell {
+  padding: 1rem; /* 16px */
+  vertical-align: middle;
+}
+
+/* TableCaption styles */
+.table-caption {
+  margin-top: 1rem; /* 16px */
+  font-size: 0.875rem; /* 14px */
+  color: #666; /* Adjust as needed */
+}
+
+.table-head::first-letter {
+  text-transform: uppercase;
+}
