@@ -12,8 +12,8 @@ const db_connection = new Client({
 db_connection
   .connect()
   .then(() =>
-    console.log(`DB successfully connected on port: ${db_connection.port}`)
+    console.log(`DB connection successful on port: ${db_connection.port}`)
   )
-  .catch((err) => console.error('DB connection ERROR', err.stack));
+  .catch((err) => console.error('DB connection unsuccessful', err.stack));
 
 module.exports = db_connection;
