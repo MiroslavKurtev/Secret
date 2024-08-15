@@ -1,7 +1,8 @@
 const express = require('express');
-const db_connection = require('./db_connection.js');
+const connectToDatabase = require('./database/db_connection.js');
 const port = 3003;
 const app = express();
+connectToDatabase();
 
 const logger = function (req, res, next) {
   console.log(`[${Date.now()}] ${req.method} ${req.url}`);
