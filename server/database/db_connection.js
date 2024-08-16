@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client } = require('pg');
 
-const db_connection = new Client({
+const dbClient = new Client({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   port: process.env.DB_PORT,
@@ -11,11 +11,11 @@ const db_connection = new Client({
 
 async function connectToDatabase() {
   try {
-    await db_connection.connect();
-    console.log(`DB connection successful on port: ${db_connection.port}`);
+    await dbClient.connect();
+    console.log(`DB connection successful on port: ${dbClient.port}`);
   } catch (err) {
     console.error('DB connection unsuccessful', err.stack);
   }
 }
 
-module.exports = connectToDatabase;
+module.exports = { dbClient, connectToDatabase };
