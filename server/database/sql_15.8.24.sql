@@ -2,12 +2,14 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS app_user (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY (INCREMENT 1),
-    user_role character varying NOT NULL,
-    team character varying NOT NULL,
-    first_name character varying NOT NULL,
-    last_name character varying NOT NULL,
-    date_of_birth date NOT NULL,
-    gender character varying(1) NOT NULL CHECK (gender IN ('m', 'f')),
+    user_role character varying,
+    team character varying,
+    first_name character varying,
+    last_name character varying,
+    date_of_birth date,
+    hashed_password character varying NOT NULL,
+    email character varying NOT NULL,
+    gender character varying(1) CHECK (gender IN ('m', 'f')),
     PRIMARY KEY (id)
 );
 
