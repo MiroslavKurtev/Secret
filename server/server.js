@@ -1,9 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
+
 const { connectToDatabase } = require('./database/db_connection.js');
 const userRouter = require('./routes/userRouter.js');
 const app = express();
 connectToDatabase();
+
+app.use(cors());
 
 const serverPort = process.env.SERVER_PORT || 3003;
 const serverHost = process.env.SERVER_HOST || 'localhost';
