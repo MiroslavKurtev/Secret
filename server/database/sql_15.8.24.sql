@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS app_user (
     last_name character varying,
     date_of_birth date,
     hashed_password character varying NOT NULL,
-    email character varying NOT NULL,
+    email character varying(255) NOT NULL UNIQUE,
     gender character varying(1) CHECK (gender IN ('m', 'f')),
     PRIMARY KEY (id)
 );
