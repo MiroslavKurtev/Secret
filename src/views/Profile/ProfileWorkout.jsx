@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableCell, TableRow } from '../../components/Table';
-import { formatSeconds } from '../../utils/formatTime.js';
+import { formatSeconds } from '../../utils/formating/formatTime.js';
 
 const ProfileWorkout = ({ workout, count }) => {
   return (

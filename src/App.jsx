@@ -1,14 +1,14 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css';
+
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import './App.css';
 import Profile from './views/Profile/Profile';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Hello world!</div>,
+    element: <div>Home page</div>,
     errorElement: <div>Error 404 Not found</div>,
   },
   {
