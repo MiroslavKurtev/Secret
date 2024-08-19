@@ -7,10 +7,13 @@ import Competitions from './Competitions/Competitions.jsx';
 
 const Profile = () => {
   return (
-    <div className='profile-container'>
-      <div className='profile-information'>
-        <div className='img-container'>
-          <img src={process.env.PUBLIC_URL + 'default_profile.jpg'} alt='' />
+    <div className="profile-container">
+      <div className="profile-information">
+        <div className="img-container">
+          <img
+            src={process.env.REACT_APP_PUBLIC_URL + 'default_profile.jpg'}
+            alt=""
+          />
         </div>
         <ProfileInformation profileData={profile} />
       </div>
