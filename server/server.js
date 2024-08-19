@@ -24,11 +24,7 @@ app.get('/test', (req, res) => {
   res.json({ ok: true });
 });
 
-app.use('/users', userRouter);
-
-app.get('/greet/:name', (req, res) => {
-  res.json({ greeting: `Yooo ${req.params.name}` });
-});
+app.use('/api/users', userRouter);
 
 app.listen(serverPort, serverHost, () => {
   console.log(`Server running at http://${serverHost}:${serverPort}/`);
