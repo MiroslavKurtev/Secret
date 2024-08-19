@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useLoginUserMutation } from '../../api/endpoints/authApiSlice';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
+  const [loginUser, { isLoading, isError, error }] = useLoginUserMutation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const token = useSelector((state) => state.user.token);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,32 +19,18 @@ const Login = () => {
     });
   };
 
-  const handleLogin = async () => {
-    const { email, password } = formData;
-
-    if (!email || !password) {
-      console.log('Please fill out all fields');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (token) {
+      console.log('User is already logged in.', token);
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3003/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Server response:', data);
-      } else {
-        const errorData = await response.json();
-        console.log('Error response:', errorData);
-      }
-    } catch (error) {
-      console.error('Error:', error);
+      await loginUser(formData).unwrap();
+      console.log('User login successfully:');
+    } catch (err) {
+      console.error('Failed to login:', formData, err);
     }
   };
 

@@ -1,14 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {
-    token: '',
-    fist_name: '',
-    last_name: '',
-    date_of_birth: '',
-    gender: '',
-    team: '',
-  },
+  token: '',
+  fist_name: '',
+  last_name: '',
+  date_of_birth: '',
+  gender: '',
+  team: '',
 };
 
 const userSlice = createSlice({
@@ -16,7 +14,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setToken(state, action) {
-      state.user.token = action.payload;
+      state.token = action.payload;
     },
   },
 });

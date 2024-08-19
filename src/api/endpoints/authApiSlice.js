@@ -1,20 +1,18 @@
 import { handleOnQueryStarted } from '../../utils/apiCalls/handleOnQueryStarted';
 import apiSlice from '../apiSlice';
-import { setToken } from '../userSlice';
+import { setToken } from '../../features/userSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query: (userLoginData) => ({
-        url: '/user/login',
+        url: '/users/login',
         method: 'POST',
         body: userLoginData,
       }),
       onQueryStarted: (arg, { dispatch, queryFulfilled }) => {
         const onSuccess = (response, dispatch) => {
-          console.log('Login successful:', response);
-          const token = response.data.token;
-          dispatch(setToken(token));
+          dispatch(setToken(response.data.token));
         };
 
         const onError = (error, dispatch) => {
@@ -26,7 +24,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     }),
     registerUser: builder.mutation({
       query: (userRegisterData) => ({
-        url: '/user/signup',
+        url: '/users/signup',
         method: 'POST',
         body: userRegisterData,
       }),
