@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-
+const router = require('./routes/router.js');
 const { connectToDatabase } = require('./database/db_connection.js');
-const userRouter = require('./routes/userRouter.js');
 const app = express();
 connectToDatabase();
 
@@ -14,17 +13,14 @@ const serverHost = process.env.SERVER_HOST || 'localhost';
 
 const logger = function (req, res, next) {
   console.log(`[${Date.now()}] ${req.method} ${req.url}`);
-
   next();
 };
+
 app.use(logger);
+
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-  res.json({ ok: true });
-});
-
-app.use('/api/users', userRouter);
+app.use('/', router);
 
 app.listen(serverPort, serverHost, () => {
   console.log(`Server running at http://${serverHost}:${serverPort}/`);
