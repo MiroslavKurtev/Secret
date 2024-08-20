@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import './Register.css';
+import { useRegisterUserMutation } from '../../api/endpoints/authApiSlice';
+import { useSelector } from 'react-redux';
 
 const Register = () => {
+  const [registerUser, { isLoading, isError, error }] =
+    useRegisterUserMutation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     password_confirm: '',
   });
+  const token = useSelector((state) => state.user.token);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,35 +21,29 @@ const Register = () => {
     });
   };
 
-  const handleRegister = async () => {
-    const { email, password, password_confirm } = formData;
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-    if (password !== password_confirm) {
-      console.log('Passwords do not match');
+    if (token) {
+      console.log('User is already logged in.', token);
       return;
     }
+
+    const { email, password, password_confirm } = formData;
 
     if (!email || !password || !password_confirm) {
       console.log('Please fill out all fields');
       return;
     }
 
-    try {
-      const response = await fetch('http://localhost:3003/users/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password, password_confirm }),
-      });
+    if (password !== password_confirm) {
+      console.log('Passwords do not match');
+      return;
+    }
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Server response:', data);
-      } else {
-        const errorData = await response.json();
-        console.log('Error response:', errorData);
-      }
+    try {
+      await registerUser(formData).unwrap();
+      console.log('User is registered:', formData);
     } catch (error) {
       console.error('Error:', error);
     }
