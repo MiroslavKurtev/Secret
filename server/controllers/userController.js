@@ -88,3 +88,54 @@ exports.login = async function (req, res, next) {
     next(err);
   }
 };
+
+exports.updateUserInformation = async function (req, res, next) {
+  const userInformation = req.body;
+  const allowedFields = ['first_name', 'last_name', 'gender', 'date_of_birth'];
+
+  const filteredReq = {};
+  for (const field in userInformation) {
+    if (allowedFields.includes(field)) {
+      filteredReq[field] = userInformation[field];
+    }
+  }
+
+  const userId = req.user.id;
+
+  // Build the SET clause for the SQL statement
+  const setClause = Object.keys(filteredReq)
+    .map((key, index) => `"${key}" = $${index + 1}`)
+    .join(', ');
+
+  const values = Object.values(filteredReq);
+
+  if (setClause === '') {
+    return res.status(400).json({ message: 'No valid fields to update.' });
+  }
+
+  try {
+    const queryText = `UPDATE users SET ${setClause} WHERE id = $${
+      values.length + 1
+    } RETURNING *`;
+    console.log(queryText);
+
+    const result = await dbClient.query(queryText, [...values, userId]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    res.status(200).json({
+      message: 'User information updated successfully',
+      data: result.rows[0],
+    });
+  } catch (error) {
+    console.error('Error updating user information:', error);
+    res.status(500).json({
+      message: 'An error occurred while updating user information',
+      error: error.message,
+    });
+  }
+
+  next();
+};
