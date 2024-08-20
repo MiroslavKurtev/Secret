@@ -5,10 +5,10 @@ const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_SERVER_URL}`,
     prepareHeaders: (headers, { getState }) => {
-      // const token = getState().auth.token;
-      // if (token) {
-      //   headers.set('Authorization', `Bearer ${token}`);
-      // }
+      const token = getState().user.token;
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
 
       return headers;
     },
